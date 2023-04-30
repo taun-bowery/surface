@@ -255,7 +255,8 @@ defmodule Surface do
       if only_current_project do
         [project_app]
       else
-        :ok = Application.ensure_loaded(project_app)
+        # commented out due to ** (ArgumentError) unknown application: :pangea
+        # :ok = Application.ensure_loaded(project_app)
         project_deps_apps = Application.spec(project_app, :applications) || []
         [project_app | project_deps_apps]
       end
